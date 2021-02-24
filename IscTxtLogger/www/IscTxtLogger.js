@@ -9,6 +9,9 @@ exports.coolMethod = function (arg0, success, error) {
     // 4:给*.java判断的action值
     exec(success, error, javaName, 'coolMethod', []);
 };
+exports.showToast = function (arg0, success, error) {
+    exec(success, error, javaName, 'showToast', [arg0]);
+};
 exports.initLogger = function (arg0, success, error) {
     exec(success, error, javaName, 'initLogger', []);
 };

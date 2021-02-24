@@ -28,6 +28,12 @@ public class IscTxtLogger extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         this.toast(action);
+        // 演示
+        if (action.equals("showToast")) {
+            String message = args.getString(0);
+            this.showToast(message, callbackContext);
+            return true;
+        }
         // 初始化
         if (action.equals("initLogger")) {
             this.initLogger();
