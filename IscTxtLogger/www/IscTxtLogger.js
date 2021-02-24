@@ -7,10 +7,13 @@ exports.coolMethod = function (arg0, success, error) {
     // 2:失败的回调
     // 3:plugin.xml中配置的feature的name属性名
     // 4:给*.java判断的action值
-    exec(success, error, javaName, 'coolMethod', [arg0]);
+    exec(success, error, javaName, 'coolMethod', []);
 };
-exports.init = function (arg0, success, error) {
-    exec(success, error, javaName, 'init', [arg0]);
+exports.initLogger = function (arg0, success, error) {
+    exec(success, error, javaName, 'initLogger', []);
+};
+exports.clickPermissions = function (arg0, success, error) {
+    exec(success, error, javaName, 'clickPermissions', [arg0]);
 };
 exports.logInfo = function (arg0, success, error) {
     exec(success, error, javaName, 'logInfo', [arg0]);

@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         SimpleDateFormat simpleFormatter = new SimpleDateFormat("HH:mm:ss");
         String now = simpleFormatter.format(new Date(System.currentTimeMillis()));
-        IscTxtLoggerHelper.getInstance().init(getApplicationContext());
+        IscTxtLoggerHelper.getInstance().init(getApplicationContext(),this);
         IscTxtLoggerHelper.getInstance().logInfo("测试信息" + now);
         IscTxtLoggerHelper.getInstance().logNetwork("测试信息" + now);
     }

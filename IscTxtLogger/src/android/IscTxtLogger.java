@@ -22,16 +22,35 @@ public class IscTxtLogger extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         // your init code here
-        this.init();
+        this.initLogger();
     }
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         this.toast(action);
-        if (action.equals("init")) {
-            this.init();
+        // 初始化
+        if (action.equals("initLogger")) {
+            this.initLogger();
             return true;
         }
+        // 检查权限
+        if (action.equals("clickPermissions")) {
+            this.clickPermissions();
+            return true;
+        }
+        // 
+        if (action.equals("logInfo")) {
+            String message = args.getString(0);
+            this.logInfo(message);
+            return true;
+        }
+        // 
+        if (action.equals("logNetwork")) {
+            String message = args.getString(0);
+            this.logNetwork(message);
+            return true;
+        }
+        // 
         if (action.equals("coolMethod")) {
             String message = args.getString(0);
             this.coolMethod(message, callbackContext);
@@ -40,8 +59,11 @@ public class IscTxtLogger extends CordovaPlugin {
         return false;
     }
 
-    private void init(){
-        IscTxtLoggerHelper.getInstance().init(cordova.getContext());
+    private void initLogger(){
+        IscTxtLoggerHelper.getInstance().init(cordova.getContext(),cordova.getActivity());
+    }
+    private void clickPermissions(){
+        IscTxtLoggerHelper.getInstance().clickPermissions();
     }
 
     private void coolMethod(String message, CallbackContext callbackContext) {

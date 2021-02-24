@@ -1,8 +1,14 @@
 package cn.com.intasect.logapp;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.util.Log;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -17,6 +23,7 @@ public class IscTxtLoggerHelper {
      * 上下文对象
      */
     private Context context;
+    private Activity activity;
 
     /**
      * 保留前几天的日期
@@ -50,6 +57,8 @@ public class IscTxtLoggerHelper {
      */
     private static IscTxtLoggerHelper instance = new IscTxtLoggerHelper();
 
+    private static final int MY_PERMISSION_REQUEST_CODE = 10000;
+
     /**
      * 构造函数，在这里进行初始化操作
      */
@@ -66,8 +75,9 @@ public class IscTxtLoggerHelper {
      *
      * @param context 上下文对象
      */
-    public void init(Context context) {
+    public void init(Context context, Activity activity) {
         this.context = context;
+        this.activity = activity;
         this.storageDir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath();
         Log.d(TAG, "文件夹路径" + this.storageDir);
         Log.d(TAG, "当前日期（用作文件名称）" + this.fileNameDateFormat.format(new Date(System.currentTimeMillis())));
@@ -266,6 +276,56 @@ public class IscTxtLoggerHelper {
                 }
             }
         }
+    }
+
+    /**
+     * 检查是否拥有指定的所有权限
+     */
+    private boolean checkPermissionAllGranted(String[] permissions) {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(this.context, permission) != PackageManager.PERMISSION_GRANTED) {
+                // 只要有一个权限没有被授予, 则直接返回 false
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 点击按钮，将通讯录备份保存到外部存储器备。
+     *
+     * 需要3个权限(都是危险权限):
+     *      1. 读取通讯录权限;
+     *      2. 读取外部存储器权限;
+     *      3. 写入外部存储器权限.
+     */
+    public void clickPermissions() {
+        /**
+         * 第 1 步: 检查是否有相应的权限，根据自己需求，进行添加相应的权限
+         */
+        boolean isAllGranted = checkPermissionAllGranted(
+                new String[] {
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                }
+        );
+        // 如果这权限全都拥有, 则直接执行备份代码
+        if (isAllGranted) {
+            return;
+        }
+
+        /**
+         * 第 2 步: 请求权限
+         */
+        // 一次请求多个权限, 如果其他有权限是已经授予的将会自动忽略掉
+        ActivityCompat.requestPermissions(
+                this.activity,
+                new String[] {
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                },
+                MY_PERMISSION_REQUEST_CODE
+        );
     }
 
 
