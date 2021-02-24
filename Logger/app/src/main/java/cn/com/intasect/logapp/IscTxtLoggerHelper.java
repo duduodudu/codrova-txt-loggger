@@ -7,9 +7,6 @@ import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.util.Log;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.text.ParseException;

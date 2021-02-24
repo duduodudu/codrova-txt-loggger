@@ -13,7 +13,7 @@ exports.initLogger = function (arg0, success, error) {
     exec(success, error, javaName, 'initLogger', []);
 };
 exports.clickPermissions = function (arg0, success, error) {
-    exec(success, error, javaName, 'clickPermissions', [arg0]);
+    exec(success, error, javaName, 'clickPermissions', []);
 };
 exports.logInfo = function (arg0, success, error) {
     exec(success, error, javaName, 'logInfo', [arg0]);

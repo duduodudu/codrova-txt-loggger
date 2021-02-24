@@ -58,10 +58,15 @@ public class IscTxtLogger extends CordovaPlugin {
         }
         return false;
     }
-
+    /**
+     * 初始化logger
+     */
     private void initLogger(){
         IscTxtLoggerHelper.getInstance().init(cordova.getContext(),cordova.getActivity());
     }
+    /**
+     * android6之后需要动态权限获取
+     */
     private void clickPermissions(){
         IscTxtLoggerHelper.getInstance().clickPermissions();
     }
