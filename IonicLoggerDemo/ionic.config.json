@@ -1,0 +1,7 @@
+{
+  "name": "IonicLoggerDemo",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
