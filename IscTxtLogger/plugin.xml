@@ -22,7 +22,7 @@
             <!-- 注意不要使用-，应用.替代- -->
                 <!-- <param name="android-package" value="cordova-plugin-IscTxtLogger.IscTxtLogger" /> -->
                 <!--  可以进行修改 -->
-                <param name="android-package" value="cn.com.intasect.logapp" />
+                <param name="android-package" value="cn.com.intasect.logapp.IscTxtLogger" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
