@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-IscTxtLogger" version="1.0.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>IscTxtLogger</name>
+    <!-- js调用模块:src为调用插件的js文件路径 -->
+    <js-module name="IscTxtLogger" src="www/IscTxtLogger.js">
+        <!-- clobbers#target: 为插件安装后调用方法的前缀 -->
+        <!-- ordova.plugins.IscTxtLogger.[插件名称] -->
+        <!-- 也可以自定义 -->
+        <!-- <clobbers target="cordova.plugins.IscTxtLogger" /> -->
+        <clobbers target="IscTxtLogger" />
+    </js-module>
+    <!-- android平台的配置 -->
+    <platform name="android">
+        <!-- 插件配置:target为插件安装时，cordova项目android环境配置文件的位置 -->
+        <!-- 插件安州时会讲config-file标签中添加到res/xml/config.xml文件中 -->
+        <config-file parent="/*" target="res/xml/config.xml">
+            <!-- name为对应www/*.js文件中调用的名称 -->
+            <feature name="IscTxtLogger">
+            <!-- android-package: 插件安装到项目之后*.java的文件目录，即为包路径 -->
+            <!-- 注意不要使用-，应用.替代- -->
+                <!-- <param name="android-package" value="cordova-plugin-IscTxtLogger.IscTxtLogger" /> -->
+                <!--  可以进行修改 -->
+                <param name="android-package" value="org.apache.cordova.intasect.IscTxtLogger" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <!-- src 插件目录中的java源路径，target-dir:插件安装后的路径 -->
+        <!-- <source-file src="src/android/IscTxtLogger.java" target-dir="src/cordova-plugin-IscTxtLogger/IscTxtLogger" /> -->
+        <!-- 注意：包路径应该和包路径保持一致 -->
+        <source-file src="src/android/IscTxtLogger.java" target-dir="src/org/apache/cordova/intasect/IscTxtLogger" />
+        <source-file src="src/android/IscTxtLoggerHelper.java" target-dir="src/cn/com/intasect/logapp" />
+    </platform>
+</plugin>
