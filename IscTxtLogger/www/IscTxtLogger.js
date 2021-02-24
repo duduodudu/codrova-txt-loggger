@@ -1,5 +1,5 @@
 var exec = require('cordova/exec');
-var javaName = '';
+var javaName = 'IscTxtLogger';
 // coolMethod: 插件安装后的js调用的方法名称
 // arg0 传递的参数
 exports.coolMethod = function (arg0, success, error) {
@@ -8,6 +8,9 @@ exports.coolMethod = function (arg0, success, error) {
     // 3:plugin.xml中配置的feature的name属性名
     // 4:给*.java判断的action值
     exec(success, error, javaName, 'coolMethod', [arg0]);
+};
+exports.init = function (arg0, success, error) {
+    exec(success, error, javaName, 'init', [arg0]);
 };
 exports.logInfo = function (arg0, success, error) {
     exec(success, error, javaName, 'logInfo', [arg0]);

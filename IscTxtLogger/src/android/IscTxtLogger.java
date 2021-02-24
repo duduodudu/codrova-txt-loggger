@@ -1,7 +1,10 @@
-package cordova.plugin.intasect;
+package cn.com.intasect.logapp;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
+
+import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaWebView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,13 +22,14 @@ public class IscTxtLogger extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         // your init code here
-        IscTxtLoggerHelper.getInstance().init(getApplicationContext());
+        this.init();
     }
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         this.toast(action);
         if (action.equals("init")) {
+            this.init();
             return true;
         }
         if (action.equals("coolMethod")) {
@@ -36,9 +40,13 @@ public class IscTxtLogger extends CordovaPlugin {
         return false;
     }
 
+    private void init(){
+        IscTxtLoggerHelper.getInstance().init(cordova.getContext());
+    }
+
     private void coolMethod(String message, CallbackContext callbackContext) {
         if (message != null && message.length() > 0) {
-            Toast.makeText(cordova.getContext(),message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(cordova.getContext(), message, Toast.LENGTH_SHORT).show();
             callbackContext.success(message);
         } else {
             callbackContext.error("Expected one non-empty string argument.");
@@ -47,7 +55,7 @@ public class IscTxtLogger extends CordovaPlugin {
 
     private void showToast(String message, CallbackContext callbackContext){
         if(message != null && message.length() > 0){
-            Toast toast = Toast.makeText(cordova.getContext(),message, Toast.LENGTH_SHORT).show();
+            Toast.makeText(cordova.getContext(),message, Toast.LENGTH_SHORT).show();
             callbackContext.success(message);
         } else {
             callbackContext.error("调用失败");
@@ -57,7 +65,7 @@ public class IscTxtLogger extends CordovaPlugin {
      * toast
      */
     private void toast(String message){
-        Toast toast = Toast.makeText(cordova.getContext(),message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(cordova.getContext(),message, Toast.LENGTH_SHORT).show();
     }
 
     /**

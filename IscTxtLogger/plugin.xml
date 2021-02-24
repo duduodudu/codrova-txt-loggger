@@ -22,14 +22,14 @@
             <!-- 注意不要使用-，应用.替代- -->
                 <!-- <param name="android-package" value="cordova-plugin-IscTxtLogger.IscTxtLogger" /> -->
                 <!--  可以进行修改 -->
-                <param name="android-package" value="org.apache.cordova.intasect.IscTxtLogger" />
+                <param name="android-package" value="cn.com.intasect.logapp" />
             </feature>
         </config-file>
         <config-file parent="/*" target="AndroidManifest.xml"></config-file>
         <!-- src 插件目录中的java源路径，target-dir:插件安装后的路径 -->
         <!-- <source-file src="src/android/IscTxtLogger.java" target-dir="src/cordova-plugin-IscTxtLogger/IscTxtLogger" /> -->
         <!-- 注意：包路径应该和包路径保持一致 -->
-        <source-file src="src/android/IscTxtLogger.java" target-dir="src/org/apache/cordova/intasect/IscTxtLogger" />
+        <source-file src="src/android/IscTxtLogger.java" target-dir="src/cn/com/intasect/logapp" />
         <source-file src="src/android/IscTxtLoggerHelper.java" target-dir="src/cn/com/intasect/logapp" />
     </platform>
 </plugin>

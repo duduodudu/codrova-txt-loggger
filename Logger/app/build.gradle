@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.1"
 
     defaultConfig {
         applicationId "cn.com.intasect.logapp"
-        minSdkVersion 23
-        targetSdkVersion 29
+        minSdkVersion 19
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 
