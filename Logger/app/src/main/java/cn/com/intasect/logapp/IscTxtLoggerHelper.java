@@ -15,6 +15,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 public class IscTxtLoggerHelper {
     /**
      * 上下文对象
@@ -169,6 +172,7 @@ public class IscTxtLoggerHelper {
                 } else {
                     Log.d(TAG, "createFileIfNotExits: 创建文件夹失败" + fileName);
                 }
+                delFileByDate();
             }
         } catch (Exception e) {
             e.printStackTrace();
