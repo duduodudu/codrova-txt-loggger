@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LogApp</string>
+    <string name="button_text">点击写入日志</string>
 </resources>
