@@ -1,4 +1,4 @@
-package cn.com.intasect.logapp;
+package org.apache.cordova.plugin.intasect;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -11,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.widget.Toast;
-import cn.com.intasect.logapp.IscTxtLoggerHelper;
+import org.apache.cordova.plugin.intasect.IscTxtLoggerHelper;
 
 /**
  * This class echoes a string called from JavaScript.

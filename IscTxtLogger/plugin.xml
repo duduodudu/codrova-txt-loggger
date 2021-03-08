@@ -18,18 +18,23 @@
         <config-file parent="/*" target="res/xml/config.xml">
             <!-- name为对应www/*.js文件中调用的名称 -->
             <feature name="IscTxtLogger">
-            <!-- android-package: 插件安装到项目之后*.java的文件目录，即为包路径 -->
-            <!-- 注意不要使用-，应用.替代- -->
+                <!-- android-package: 插件安装到项目之后*.java的文件目录，即为包路径 -->
+                <!-- 注意不要使用-，应用.替代- -->
                 <!-- <param name="android-package" value="cordova-plugin-IscTxtLogger.IscTxtLogger" /> -->
                 <!--  可以进行修改 -->
-                <param name="android-package" value="cn.com.intasect.logapp.IscTxtLogger" />
+                <param name="android-package" value="org.apache.cordova.plugin.intasect.IscTxtLogger" />
             </feature>
         </config-file>
-        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <!-- 权限配置 -->
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        </config-file>
         <!-- src 插件目录中的java源路径，target-dir:插件安装后的路径 -->
         <!-- <source-file src="src/android/IscTxtLogger.java" target-dir="src/cordova-plugin-IscTxtLogger/IscTxtLogger" /> -->
         <!-- 注意：包路径应该和包路径保持一致 -->
-        <source-file src="src/android/IscTxtLogger.java" target-dir="src/cn/com/intasect/logapp" />
-        <source-file src="src/android/IscTxtLoggerHelper.java" target-dir="src/cn/com/intasect/logapp" />
+        <source-file src="src/android/IscTxtLogger.java" target-dir="src/org/apache/cordova/plugin/intasect" />
+        <source-file src="src/android/IscTxtLoggerHelper.java" target-dir="src/org/apache/cordova/plugin/intasect" />
     </platform>
 </plugin>

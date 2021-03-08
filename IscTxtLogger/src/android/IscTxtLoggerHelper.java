@@ -1,4 +1,4 @@
-package cn.com.intasect.logapp;
+package org.apache.cordova.plugin.intasect;
 
 import android.Manifest;
 import android.app.Activity;
